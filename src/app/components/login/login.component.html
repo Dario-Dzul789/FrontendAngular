@@ -1,0 +1,40 @@
+<!-- Contenedor con Bootstrap -->
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Inicio De Sesion</h2>    
+
+        <!-- Formulario para agregar o editar producto -->
+        <form (ngSubmit)="getLogin()" class="card p-4 shadow-sm mb-4">
+        <div class="row g-3">
+
+            <!-- Campo nombre -->
+            <div class="col-md-5">
+                <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="nombre"
+                    name="nombre"
+                    placeholder="Nombre"
+                    required
+                />
+            </div>
+            <!-- Campo contrasena -->
+            <div class="col-md-2">
+                <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="contrasena"
+                    name="contrasena"
+                    placeholder="Contrasena"
+                    required
+                />
+            </div>
+
+            <!-- Buscar -->
+            <div class="col-md-2 d-grid gap-2">
+            <button type="submit" class="btn btn-primary">
+                Bucar
+            </button>
+            </div>
+        </div>
+        </form>
+</div>

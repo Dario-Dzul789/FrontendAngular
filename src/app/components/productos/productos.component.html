@@ -1,0 +1,103 @@
+<!-- Contenedor con Bootstrap -->
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Gestión de Productos</h2>    
+
+        <!-- Formulario para agregar o editar producto -->
+        <form (ngSubmit)="guardarProducto()" class="card p-4 shadow-sm mb-4">
+        <div class="row g-3">
+
+            <!-- Campo codigo -->
+            <div class="col-md-5">
+                <input
+                    type="codigo"
+                    class="form-control"
+                    [(ngModel)]="producto.codigo"
+                    name="codigo"
+                    placeholder="Codigo"
+                    required
+                />
+                </div>
+
+            <!-- Campo nombre -->
+            <div class="col-md-5">
+            <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="producto.nombre"
+                name="nombre"
+                placeholder="Nombre"
+                required
+            />
+            </div>
+
+            <!-- Campo precio -->
+            <div class="col-md-5">
+                <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="producto.precio"
+                    name="precio"
+                    placeholder="precio"
+                    required
+                />
+            </div>
+
+            <!-- Campo existencia -->
+            <div class="col-md-5">
+                <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="producto.existencia"
+                    name="existencia"
+                    placeholder="existencia"
+                    required
+                />
+            </div>
+
+            
+
+            <!-- Botones: Agregar/Actualizar y Cancelar -->
+            <div class="col-md-2 d-grid gap-2">
+            <button type="submit" class="btn btn-primary">
+                {{ editando ? 'Actualizar' : 'Agregar' }}
+            </button>
+            <button
+                type="button"
+                class="btn btn-secondary"
+                *ngIf="editando"
+                (click)="resetFormulario()"
+            >
+                Cancelar
+            </button>
+            </div>
+        </div>
+        </form>
+    
+        <!-- Tabla para mostrar productos -->
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                <th>#</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Existencia</th>
+                <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of productos; let i = index">
+                <td>{{ u.id }}</td>
+                <td>{{ u.codigo }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.precio }}</td>
+                <td>{{ u.existencia}}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-warning me-2" (click)="editar(u)">Editar</button>
+                    <button class="btn btn-sm btn-danger" (click)="eliminar(u.id!)">Eliminar</button>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+

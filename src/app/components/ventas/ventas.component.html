@@ -1,0 +1,88 @@
+<!-- Contenedor con Bootstrap -->
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Ventas Registradas</h2>    
+
+        <!-- Formulario para ver las ventas -->
+        <form (ngSubmit)="verVenta()" class="card p-4 shadow-sm mb-4">
+        <div class="row g-3">
+
+            <!-- Campo Fecha Inicio -->
+            <div class="col-md-5">
+                <label htmlFor="fechaInicio" className="form-label text-center w-100">Fecha inicial ventas </label> 
+                    <input
+                        id="inputInicio"
+                        type="date"
+                        name="fechaInico"
+                        [(ngModel)]="fechaInicio"
+                    />
+                </div>
+
+            <!-- Campo Fecha Final -->
+            <div class="col-md-5">
+                <label htmlFor="fechaFin" className="form-label text-center w-100">Fecha final ventas</label>
+                    <input
+                        type="date"
+                        className="form-control"
+                        name="fechaFin"
+                        [(ngModel)]="fechaFinal"
+                    />
+                </div>
+
+            <!-- Buscar -->
+            <div class="col-md-2 d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                    Bucar
+                </button>
+                </div>
+            </div>
+            
+        </form>
+        <button (click)="metodo()" [hidden]="true">Boton</button>
+    
+        <!-- Tabla para mostrar Ventas -->
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                <th>ID_VENTA</th>
+                <th>TOTAL VENTA</th>
+                <th>FECHA</th>
+                <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of ventas; let i = index">
+                <td>{{ u.id_venta }}</td>
+                <td>{{ u.total_venta }}</td>
+                <td>{{ u.fecha_venta | date :'short' }}</td>
+                <td class="text-center">
+                    <button  class="btn btn-sm btn-warning me-2" (click)="verProductos(u.productos)">Ver Productos</button>
+                </td>
+                <td class="text-center">
+                    <button  class="btn btn-sm btn-warning me-2" (click)="verDetallesVentas(u.id!)">Ver Productos</button>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Tabla para mostrar Ventas -->
+        <table class="table table-bordered table-hover shadow-sm" id="tabla" #tabla>
+            <thead class="table-light">
+                <tr>
+                <th>ID</th>
+                <th>PRODUCTO</th>
+                <th>CANTIDAD</th>
+                <th>PRECIO</th>
+                <th>TOTAL PRODUCTO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of todosDetallesVenta; let i = index">
+                <td>{{ u.id }}</td>
+                <td>{{ u.producto }}</td>
+                <td>{{ u.cantidad }}</td>
+                <td>{{ u.precio_producto }}</td>
+                <td>{{ u.total_producto }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

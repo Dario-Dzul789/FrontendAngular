@@ -1,0 +1,95 @@
+<!-- Contenedor con Bootstrap -->
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Punto De Venta</h2>    
+
+        <!-- Formulario para agregar o editar producto -->
+        <form (ngSubmit)="getProductoCodigo()" class="card p-4 shadow-sm mb-4">
+        <div class="row g-3">
+
+            <!-- Campo codigo -->
+            <div class="col-md-5">
+                <input
+                    type="codigo"
+                    class="form-control"
+                    [(ngModel)]="codigoB"
+                    name="codigo"
+                    placeholder="Codigo"
+                    required
+                />
+            </div>
+            <!-- Campo codigo -->
+            <div class="col-md-2">
+                <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="cantidad"
+                    name="cantidad"
+                    placeholder="Cantidad"
+                    required
+                />
+            </div>
+
+            <!-- Buscar -->
+            <div class="col-md-2 d-grid gap-2">
+            <button type="submit" class="btn btn-primary">
+                Bucar
+            </button>
+            </div>
+        </div>
+        
+        </form>
+        <button (click)="metodo()" [hidden]="true">Boton</button>
+
+        <!-- Tabla para mostrar productos -->
+        <table class="table table-bordered table-hover shadow-sm">
+            <thead class="table-light">
+                <tr>
+                <th>#</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total Producto</th>
+                <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of productos; let i = index">
+                <td>{{ u.id }}</td>
+                <td>{{ u.codigo }}</td>
+                <td>{{ u.nombre }}</td>
+                <td>{{ u.precio }}</td>
+                <td >{{cantidades[i]}}</td>
+                <td >{{totales[i]}}</td>
+                <td class="text-center">
+                    <button class="btn btn-sm btn-danger" (click)="eliminar(i)">Eliminar</button>
+                </td>
+                </tr>
+            </tbody>
+        </table>
+                <h5 style="text-align: center;">Total a pagar: {{Total}}</h5>
+                <!-- Formulario para agregar o editar producto -->
+        <form (ngSubmit)="registrarVenta()" class="card p-4 shadow-sm mb-4">
+            <div class="row g-3">
+    
+                <!-- Campo codigo -->
+                <div class="col-md-5">
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="Pago"
+                        placeholder="Pago"
+                        required
+                    />
+                    </div>
+    
+                <!-- Registrar -->
+                <div class="col-md-2 d-grid gap-2">
+                <button type="submit" class="btn btn-primary">
+                    Registrar
+                </button>
+                </div>
+            </div>
+            </form>
+
+</div>
