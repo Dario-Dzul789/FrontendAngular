@@ -11,7 +11,7 @@ import {ChatComponent} from './components/chat/chat.component';
 
 export const routes: Routes = [
         //{path: '',component: HomeComponent},
-        {path: '',component: LoginComponent},
+        {path: '/*',component: LoginComponent},
         {path: 'usuarios',component: UsuariosComponent},
         {path:'productos',component:ProductosComponent},
         {path:'pv',component:PVComponent},
