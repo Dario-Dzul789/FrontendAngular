@@ -79,6 +79,8 @@
                         class="form-control"
                         name="Pago"
                         placeholder="Pago"
+                        (input)="onInputChange($event)"
+                        [(ngModel)]="Pago"
                         required
                     />
                     </div>
@@ -91,5 +93,6 @@
                 </div>
             </div>
             </form>
+            <h5 style="text-align: center;">Su Cambio Es: {{Cambio}}</h5>
 
 </div>

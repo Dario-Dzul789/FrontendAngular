@@ -38,7 +38,7 @@
             
         </form>
         <button (click)="metodo()" [hidden]="true">Boton</button>
-    
+        <h5 style="text-align: center;">Total: {{Total}}</h5>
         <!-- Tabla para mostrar Ventas -->
         <table class="table table-bordered table-hover shadow-sm">
             <thead class="table-light">
@@ -46,6 +46,7 @@
                 <th>ID_VENTA</th>
                 <th>TOTAL VENTA</th>
                 <th>FECHA</th>
+                <th class="text-center">Acciones</th>
                 <th class="text-center">Acciones</th>
                 </tr>
             </thead>
@@ -63,7 +64,7 @@
                 </tr>
             </tbody>
         </table>
-
+        
         <!-- Tabla para mostrar Ventas -->
         <table class="table table-bordered table-hover shadow-sm" id="tabla" #tabla>
             <thead class="table-light">
@@ -85,4 +86,5 @@
                 </tr>
             </tbody>
         </table>
+        <p style="text-align: center;" id="parrafo" #parrafo>Total: {{TotalDV}}</p>
     </div>

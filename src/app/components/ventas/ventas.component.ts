@@ -16,6 +16,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class VentasComponent implements OnInit {
   @ViewChild('tabla')mitabla!:ElementRef;
+  @ViewChild('parrafo')miparrafo!:ElementRef;
   todosDetallesVenta: any[] = [];
   ventas: Venta[] = [];
 
@@ -80,6 +81,7 @@ export class VentasComponent implements OnInit {
     */
     
   }
+  Total:number=0;
   verVenta(){
     //Es Para que no se vea la tabla de abajo
     //const mitabla=this.mitabla.nativeElement;
@@ -87,7 +89,7 @@ export class VentasComponent implements OnInit {
     this.ventaService.getVentaPorFechas(this.fechaInicio,this.fechaFinal).subscribe(data => {
     //this.ventaService.getVentaPorFechas(this.Incio,this.Fin).subscribe(data => {
       this.ventas=data;
-      
+      this.Total = this.ventas.reduce((acc, item) => acc + (item.total_venta || 0), 0);
     });
     //alert(this.codigoB)
 
@@ -106,12 +108,17 @@ export class VentasComponent implements OnInit {
   fechaInicio:Date=new Date();
   fechaFinal:Date=new Date();
 
+  TotalDV:number=0;
   verDetallesVentas(id:number){
     const mitabla=this.mitabla.nativeElement;
+    const miparrafo=this.miparrafo.nativeElement;
+    
     this.ventadetalleService.getVentasDetallesXIdVentas(id).subscribe(data=>{
       this.renderer2.setStyle(mitabla, 'visibility', 'visible');
+      this.renderer2.setStyle(miparrafo, 'visibility', 'visible');
       //alert(id);
       this.todosDetallesVenta=data;
+      this.TotalDV = this.todosDetallesVenta.reduce((acc, item) => acc + (item.total_producto || 0), 0);
     });
   }
 }
