@@ -54,7 +54,7 @@
                 <tr *ngFor="let u of ventas; let i = index">
                 <td>{{ u.id_venta }}</td>
                 <td>{{ u.total_venta }}</td>
-                <td>{{ u.fecha_venta | date :'short':zonaHoraria }}</td>
+                <td>{{ u.fecha_venta | date :'short':'UTC' }}</td>
                 <td class="text-center">
                     <button  class="btn btn-sm btn-warning me-2" (click)="verProductos(u.productos)">Ver Productos</button>
                 </td>
