@@ -29,8 +29,8 @@ export class UsuarioService {
   }
 
   // Crear un nuevo usuario
-  addUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.apiUrl, usuario);  
+  addUsuario(timeZone:string,usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.apiUrl}/${timeZone}`, usuario);  
   }
 
   // Actualizar un usuario existente

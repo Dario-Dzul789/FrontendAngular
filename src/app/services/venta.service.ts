@@ -21,7 +21,7 @@ export class VentaService {
   }
 
   //Insertar Ventas
-  addVenta(Venta: Venta): Observable<Venta> {
-    return this.http.post<Venta>(this.apiUrl, Venta);
+  addVenta(timeZone:string,Venta: Venta): Observable<Venta> {
+    return this.http.post<Venta>(`${this.apiUrl}/${timeZone}`, Venta);
   }
 }

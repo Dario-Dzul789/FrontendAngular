@@ -27,8 +27,7 @@ export class PVComponent implements OnInit{
   
   //ProductoCompleto = { id: 0, codigo: '', nombre: '', precio:0,cantida:0,total:0 };
 
-  
-
+  zonaHoraria: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
   constructor(private productoService: ProductoService,private ventaService:VentaService,private ventadetalleService:VentasdetallesService) {
     //type ProductoCompleto ={ id: number; codigo: string; nombre: string; precio:number;cantidad: number;total_producto: number};
     //const productoscompletos: ProductoCompleto[] = [];
@@ -142,9 +141,9 @@ export class PVComponent implements OnInit{
     this.venta.fecha_venta=new Date();
     //alert(this.venta.fecha_venta);
     
-    
+    this.zonaHoraria=this.zonaHoraria.replace("/", "-");
     //this.venta.fecha_venta=Parseda(new Date(new Date().toUTCString()).toISOString());
-    this.ventaService.addVenta(this.venta).subscribe((data:any) => {
+    this.ventaService.addVenta(this.zonaHoraria,this.venta).subscribe((data:any) => {
       this.codigoVenta=data[0].id;
       //this.metodo();
       //alert("Se Guardo Correctamente LA Venta Con El Codigo: "+this.codigoVenta);

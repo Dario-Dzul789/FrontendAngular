@@ -16,15 +16,15 @@ export class UsuariosComponent implements OnInit {
   usuario: Usuario = { nombre: '',contrasena:'', email: '',fecha_nacimiento: new Date(),signo: ''};
   editando: boolean = false;
   idEditando: number | null = null;
-
+  zonaHoraria: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
   constructor(private usuarioService: UsuarioService) {
     
   }
-
+  
   // SE LANZA AUTOMATICAMENTE AL MOSTRAR EL COMPONENTE
   ngOnInit(): void {
     this.getUsuarios();
-    
+    //alert(zonaHoraria);
   }
 
   // CARGAR USUARIOS DESDE EL BACKEND
@@ -275,7 +275,9 @@ export class UsuariosComponent implements OnInit {
     } else {
       // SI NO ESTAMOS EDITANDO, CREAMOS UN NUEVO USUARIO
       //this.metodo2();
-      this.usuarioService.addUsuario(this.usuario).subscribe(() => {
+      //this.zonaHoraria="America/Mexico_City";
+      this.zonaHoraria=this.zonaHoraria.replace("/", "-");
+      this.usuarioService.addUsuario(this.zonaHoraria, this.usuario).subscribe(() => {
         //alert("id"+this.usuario.id);
         this.getUsuarios();
         this.resetFormulario();
