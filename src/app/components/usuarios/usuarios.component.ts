@@ -265,7 +265,7 @@ export class UsuariosComponent implements OnInit {
   // CREAR O ACTUALIZAR UN USUARIO
   guardarUsuario(): void {
     this.metodo2();
-    alert(this.usuario.fecha_nacimiento.toString()+"-"+this.zonaHoraria);
+    alert(this.usuario.fecha_nacimiento.toISOString()+"-"+this.zonaHoraria);
     if (this.editando && this.idEditando !== null) {
       // SI ESTAMOS EDITANDO, ENVIAREMOS PUT
       //this.metodo2();
