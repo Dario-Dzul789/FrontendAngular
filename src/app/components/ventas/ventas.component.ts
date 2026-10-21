@@ -21,7 +21,7 @@ export class VentasComponent implements OnInit {
   ventas: Venta[] = [];
 
   venta:Venta={id_venta:"",productos:"",total_venta:  0 ,fecha_venta: new Date()};
-  
+  zonaHoraria: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
   constructor(private ventaService:VentaService,private ventadetalleService:VentasdetallesService,private renderer2:Renderer2) {}
 
   // SE LANZA AUTOMATICAMENTE AL MOSTRAR EL COMPONENTE
