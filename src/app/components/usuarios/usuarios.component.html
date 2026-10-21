@@ -47,8 +47,7 @@
                     <input
                         type="date"
                         name="fechaInico"
-                        [ngModel]="usuario.fecha_nacimiento | date:'yyyy-MM-dd':'UTC'"
-                        (ngModelChange)='usuario.fecha_nacimiento = $event'
+                        [(ngModel)]="usuario.fecha_nacimiento | date:'yyyy-MM-dd':'UTC'"
                         class="form-control"
                     />
                 </div>
