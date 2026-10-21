@@ -47,7 +47,7 @@
                     <input
                         type="date"
                         name="fechaInico"
-                        [(ngModel)]="usuario.fecha_nacimiento | date:'yyyy-MM-dd':'UTC'"
+                        [(ngModel)]="usuario.fecha_nacimiento | date:'yyyy-MM-dd':zonaHoraria"
                         class="form-control"
                     />
                 </div>
