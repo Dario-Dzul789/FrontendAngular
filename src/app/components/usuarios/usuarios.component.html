@@ -47,7 +47,7 @@
                     <input
                         type="date"
                         name="fechaInico"
-                        [ngModel]="usuario.fecha_nacimiento | date:'yyyy-MM-dd'"
+                        [ngModel]="usuario.fecha_nacimiento"
                         (ngModelChange)='usuario.fecha_nacimiento = $event'
                         class="form-control"
                     />
@@ -94,7 +94,7 @@
                 <td>{{ u.nombre }}</td>
                 <td>{{ u.contrasena }}</td>
                 <td>{{ u.email }}</td>
-                <td>{{ u.fecha_nacimiento | date:'yyyy-MM-dd'}}</td>
+                <td>{{ u.fecha_nacimiento'}}</td>
                 <td>{{ u.signo }}</td>
                 <td class="text-center">
                     <button class="btn btn-sm btn-warning me-2" (click)="editar(u)">Editar</button>
