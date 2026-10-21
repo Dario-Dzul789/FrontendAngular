@@ -279,7 +279,7 @@ export class UsuariosComponent implements OnInit {
       //this.zonaHoraria="America/Mexico_City";
       this.usuario.fecha_nacimiento.setHours(14, 30, 0);
       this.zonaHoraria=this.zonaHoraria.replace("/", "-");
-      alert(this.usuario.fecha_nacimiento.toString+" "+this.zonaHoraria);
+      alert(this.usuario.fecha_nacimiento.toString()+" "+this.zonaHoraria);
       this.usuarioService.addUsuario(this.zonaHoraria, this.usuario).subscribe(() => {
         //alert("id"+this.usuario.id);
         this.getUsuarios();
