@@ -265,6 +265,7 @@ export class UsuariosComponent implements OnInit {
   // CREAR O ACTUALIZAR UN USUARIO
   guardarUsuario(): void {
     this.metodo2();
+    this.zonaHoraria="UTC";
     alert(this.usuario.fecha_nacimiento.toLocaleString()+"-"+this.zonaHoraria);
     if (this.editando && this.idEditando !== null) {
       // SI ESTAMOS EDITANDO, ENVIAREMOS PUT
@@ -277,9 +278,9 @@ export class UsuariosComponent implements OnInit {
       // SI NO ESTAMOS EDITANDO, CREAMOS UN NUEVO USUARIO
       //this.metodo2();
       //this.zonaHoraria="America/Mexico_City";
-      this.usuario.fecha_nacimiento.setHours(14);
-      this.usuario.fecha_nacimiento.setMinutes(30);
-      this.usuario.fecha_nacimiento.setSeconds(0);
+      //this.usuario.fecha_nacimiento.setHours(14);
+      //this.usuario.fecha_nacimiento.setMinutes(30);
+      //this.usuario.fecha_nacimiento.setSeconds(0);
       this.zonaHoraria=this.zonaHoraria.replace("/", "-");
       alert(this.usuario.fecha_nacimiento.toString()+" "+this.zonaHoraria);
       this.usuarioService.addUsuario(this.zonaHoraria, this.usuario).subscribe(() => {
