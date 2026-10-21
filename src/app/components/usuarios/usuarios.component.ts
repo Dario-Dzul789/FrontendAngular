@@ -24,7 +24,7 @@ export class UsuariosComponent implements OnInit {
   // SE LANZA AUTOMATICAMENTE AL MOSTRAR EL COMPONENTE
   ngOnInit(): void {
     this.getUsuarios();
-    //alert(zonaHoraria);
+    alert(this.zonaHoraria);
   }
 
   // CARGAR USUARIOS DESDE EL BACKEND
