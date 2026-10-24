@@ -33,6 +33,12 @@
                 <button type="submit" class="btn btn-primary">
                     Bucar
                 </button>
+                <button
+                    class="btn btn-sm btn-warning me-2"
+                    (click)="verVentaReporte()"
+                >
+                    Descargar PDF
+                </button>
                 </div>
             </div>
             
@@ -65,26 +71,43 @@
             </tbody>
         </table>
         
-        <!-- Tabla para mostrar Ventas -->
-        <table class="table table-bordered table-hover shadow-sm" id="tabla" #tabla>
-            <thead class="table-light">
-                <tr>
-                <th>ID</th>
-                <th>PRODUCTO</th>
-                <th>CANTIDAD</th>
-                <th>PRECIO</th>
-                <th>TOTAL PRODUCTO</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let u of todosDetallesVenta; let i = index">
-                <td>{{ u.id }}</td>
-                <td>{{ u.producto }}</td>
-                <td>{{ u.cantidad }}</td>
-                <td>{{ u.precio_producto }}</td>
-                <td>{{ u.total_producto }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="text-align: center;" id="parrafo" #parrafo>Total: {{TotalDV}}</p>
+        
+        <!-- Botón que abre -->
+        <!-- <button (click)="openModal()">Abrir modal</button>-->
+
+        <!-- Modal -->
+        <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <p>Contenido reutilizable del modal.</p>
+            
+            <button (click)="closeModal()">Cerrar</button>
+        </div>
+        </div>
+
+        <app-modal>
+            <!-- Tabla para mostrar Ventas -->
+            <table class="table table-bordered table-hover shadow-sm" id="tabla" #tabla>
+                <thead class="table-light">
+                    <tr>
+                    <th>ID</th>
+                    <th>PRODUCTO</th>
+                    <th>CANTIDAD</th>
+                    <th>PRECIO</th>
+                    <th>TOTAL PRODUCTO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of todosDetallesVenta; let i = index">
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.producto }}</td>
+                    <td>{{ u.cantidad }}</td>
+                    <td>{{ u.precio_producto }}</td>
+                    <td>{{ u.total_producto }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: center;" id="parrafo" #parrafo>Total: {{TotalDV}}</p>
+            <button (click)="modal.close()">Cerrar</button>
+        <p>{{ modal.data?.mensaje }}</p>
+        </app-modal>
     </div>

@@ -20,6 +20,11 @@ export class VentaService {
     return this.http.get<Venta[]>(`${this.apiUrl}/fechas/${inicio}/${fin}`);
   }
 
+  // Buscar Venta Por Fechas
+  getVentaPorFechasReporte(inicio:Date,fin:Date): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/fechasreporte/${inicio}/${fin}`);
+  }
+
   //Insertar Ventas
   addVenta(timeZone:string,Venta: Venta): Observable<Venta> {
     return this.http.post<Venta>(`${this.apiUrl}/${timeZone}`, Venta);
