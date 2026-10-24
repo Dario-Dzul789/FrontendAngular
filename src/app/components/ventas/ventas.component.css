@@ -1,31 +1,221 @@
-#tabla{
-    
-}
-#parrafo{
-    
-    font-weight: bold;
+/* ===== Contenedor principal ===== */
+.ventas-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
+.ventas-titulo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* ===== Formulario ===== */
+.ventas-form {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.ventas-form-fila {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.ventas-form-campo {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.ventas-label {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.ventas-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.ventas-input:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 3px rgba(13,110,253,0.15);
+}
+
+.ventas-form-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+/* ===== Botones ===== */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.btn-primario {
+  background: #0d6efd;
+  color: #fff;
+}
+.btn-primario:hover {
+  background: #0b5ed7;
+}
+
+.btn-secundario {
+  background: #ffc107;
+  color: #212529;
+}
+.btn-secundario:hover {
+  background: #e0a800;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+/* ===== Total ===== */
+.ventas-total {
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+/* ===== Tabla ===== */
+.tabla-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.ventas-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  background: #fff;
+}
+
+.ventas-tabla thead {
+  background: #f8f9fa;
+}
+
+.ventas-tabla th,
+.ventas-tabla td {
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.ventas-tabla tbody tr:hover {
+  background: #f1f3f5;
+}
+
+.ventas-acciones {
+  white-space: nowrap;
+}
+
+/* ===== Modal ===== */
 .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.2s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* ===== Responsive móvil ===== */
+@media (max-width: 768px) {
+  .ventas-container {
+    margin: 1rem auto;
+    padding: 0 0.5rem;
   }
-  
-  .modal-content {
-    background: #fff;
-    padding: 24px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    min-width: 300px;
+
+  .ventas-titulo {
+    font-size: 1.2rem;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+
+  .ventas-form-fila {
+    flex-direction: column;
+    align-items: stretch;
   }
+
+  .ventas-form-botones {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .ventas-form-botones .btn {
+    flex: 1;
+  }
+
+  .ventas-tabla {
+    min-width: 500px;
+  }
+
+  .ventas-tabla th,
+  .ventas-tabla td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-sm {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ventas-form {
+    padding: 0.75rem;
+  }
+
+  .ventas-label {
+    font-size: 0.8rem;
+  }
+
+  .ventas-input {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.6rem;
+  }
+
+  .ventas-form-botones {
+    flex-direction: column;
+  }
+}   
