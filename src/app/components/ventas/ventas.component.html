@@ -1,94 +1,86 @@
 <div class="ventas-container">
-    <h2 class="ventas-titulo">Ventas Registradas</h2>
-  
-    <!-- Formulario para ver las ventas -->
-    <form (ngSubmit)="verVenta()" class="ventas-form">
-      <div class="ventas-form-fila">
-        <!-- Campo Fecha Inicio -->
-        <div class="ventas-form-campo">
-          <label for="fechaInicio" class="ventas-label">Fecha inicial ventas</label>
-          <input id="inputInicio" type="date" name="fechaInicio" [(ngModel)]="fechaInicio" class="ventas-input" />
-        </div>
-  
-        <!-- Campo Fecha Final -->
-        <div class="ventas-form-campo">
-          <label for="fechaFin" class="ventas-label">Fecha final ventas</label>
-          <input id="fechaFin" type="date" name="fechaFin" [(ngModel)]="fechaFinal" class="ventas-input" />
-        </div>
-  
-        <!-- Botones -->
-        <div class="ventas-form-botones">
-          <button type="submit" class="btn btn-primario">Buscar</button>
-          <button type="button" class="btn btn-secundario" (click)="verVentaReporte()">Descargar PDF</button>
-        </div>
+  <h2 class="ventas-titulo">Ventas Registradas</h2>
+
+  <form (ngSubmit)="verVenta()" class="ventas-form">
+    <div class="ventas-form-fila">
+      <div class="ventas-form-campo">
+        <label for="fechaInicio" class="ventas-label">Fecha inicial ventas</label>
+        <input id="inputInicio" type="date" name="fechaInicio" [(ngModel)]="fechaInicio" class="ventas-input" />
       </div>
-    </form>
-  
-    <button (click)="metodo()" [hidden]="true">Boton</button>
-  
-    <h5 class="ventas-total">Total: {{Total}}</h5>
-  
-    <!-- Tabla de ventas -->
+      <div class="ventas-form-campo">
+        <label for="fechaFin" class="ventas-label">Fecha final ventas</label>
+        <input id="fechaFin" type="date" name="fechaFin" [(ngModel)]="fechaFinal" class="ventas-input" />
+      </div>
+      <div class="ventas-form-botones">
+        <button type="submit" class="btn btn-primario">Buscar</button>
+        <button type="button" class="btn btn-secundario" (click)="verVentaReporte()">Descargar PDF</button>
+      </div>
+    </div>
+  </form>
+
+  <button (click)="metodo()" [hidden]="true">Botón</button>
+  <h5 class="ventas-total">Total: {{Total}}</h5>
+
+  <div class="tabla-scroll">
+    <table class="ventas-tabla">
+      <thead>
+        <tr>
+          <th>ID_VENTA</th>
+          <th>TOTAL VENTA</th>
+          <th>FECHA</th>
+          <th>Acciones</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of ventas; let i = index">
+          <td>{{ u.id_venta }}</td>
+          <td>{{ u.total_venta }}</td>
+          <td>{{ u.fecha_venta | date :'short':'UTC' }}</td>
+          <td class="ventas-acciones">
+            <button class="btn btn-sm btn-secundario" (click)="verProductos(u.productos)">Ver Productos</button>
+          </td>
+          <td class="ventas-acciones">
+            <button class="btn btn-sm btn-secundario" (click)="verDetallesVentas(u.id!)">Ver Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <p>Contenido reutilizable del modal.</p>
+      <button class="btn btn-secundario" (click)="closeModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <app-modal>
     <div class="tabla-scroll">
-      <table class="ventas-tabla">
+      <table class="ventas-tabla" id="tabla" #tabla>
         <thead>
           <tr>
-            <th>ID_VENTA</th>
-            <th>TOTAL VENTA</th>
-            <th>FECHA</th>
-            <th>Acciones</th>
-            <th>Acciones</th>
+            <th>ID</th>
+            <th>PRODUCTO</th>
+            <th>CANTIDAD</th>
+            <th>PRECIO</th>
+            <th>TOTAL PRODUCTO</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let u of ventas; let i = index">
-            <td>{{ u.id_venta }}</td>
-            <td>{{ u.total_venta }}</td>
-            <td>{{ u.fecha_venta | date :'short':'UTC' }}</td>
-            <td class="ventas-acciones">
-              <button class="btn btn-sm btn-secundario" (click)="verProductos(u.productos)">Ver Productos</button>
-            </td>
-            <td class="ventas-acciones">
-              <button class="btn btn-sm btn-secundario" (click)="verDetallesVentas(u.id!)">Ver Detalles</button>
-            </td>
+          <tr *ngFor="let u of todosDetallesVenta; let i = index">
+            <td>{{ u.id }}</td>
+            <td>{{ u.producto }}</td>
+            <td>{{ u.cantidad }}</td>
+            <td>{{ u.precio_producto }}</td>
+            <td>{{ u.total_producto }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  
-    <!-- Modal -->
-    <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <p>Contenido reutilizable del modal.</p>
-        <button class="btn btn-secundario" (click)="closeModal()">Cerrar</button>
-      </div>
-    </div>
-  
-    <app-modal>
-      <div class="tabla-scroll">
-        <table class="ventas-tabla" id="tabla" #tabla>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>PRODUCTO</th>
-              <th>CANTIDAD</th>
-              <th>PRECIO</th>
-              <th>TOTAL PRODUCTO</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let u of todosDetallesVenta; let i = index">
-              <td>{{ u.id }}</td>
-              <td>{{ u.producto }}</td>
-              <td>{{ u.cantidad }}</td>
-              <td>{{ u.precio_producto }}</td>
-              <td>{{ u.total_producto }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="ventas-total" id="parrafo" #parrafo>Total: {{TotalDV}}</p>
-      <button class="btn btn-secundario" (click)="modal.close()">Cerrar</button>
-      <p>{{ modal.data?.mensaje }}</p>
-    </app-modal>
-  </div>   
+    <p class="ventas-total" id="parrafo" #parrafo>Total: {{TotalDV}}</p>
+    <button class="btn btn-secundario" (click)="modal.close()">Cerrar</button>
+    <p>{{ modal.data?.mensaje }}</p>
+  </app-modal>
+</div>   

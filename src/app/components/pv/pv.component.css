@@ -1,197 +1,143 @@
-/* Reset básico */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* ===== Contenedor principal ===== */
+.pos-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
   }
   
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f5f5f5;
-    padding: 10px;
-  }
-  
-  /* Contenedor */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px 10px;
-  }
-  
-  .titulo {
+  .pos-title {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    margin-bottom: 24px;
   }
   
-  /* Tarjeta / Card */
-  .card {
+  /* ===== Cards ===== */
+  .pos-card {
     background: #fff;
+    border: 1px solid #dee2e6;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 16px;
-    margin-bottom: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   
-  /* Fila de formulario */
-  .form-row {
+  /* ===== Fila flexible (reemplaza .row) ===== */
+  .pos-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
   
-  .campo {
-    flex: 1;
-    min-width: 0;
+  /* Columnas proporcionales */
+  .pos-col-5 { flex: 5 1 0; }
+  .pos-col-2 { flex: 2 1 0; }
+  
+  .pos-buttons {
+    display: grid;
+    gap: 8px;
+    flex: 2 1 0;
   }
   
-  .campo-codigo {
-    flex: 5;
-  }
-  .campo-cantidad {
-    flex: 2;
-  }
-  .campo-btn {
-    flex: 2;
-  }
-  .campo-pago {
-    flex: 5;
-  }
-  
-  /* Inputs */
-  .input {
+  /* ===== Inputs ===== */
+  .pos-input {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
     border-radius: 6px;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    box-sizing: border-box;
   }
-  .input:focus {
+  .pos-input:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.15);
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 3px rgba(13,110,253,0.25);
   }
   
-  /* Botones */
-  .btn {
-    padding: 10px 16px;
+  /* ===== Botones ===== */
+  .pos-btn {
+    display: inline-block;
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
-    font-size: 0.95rem;
+    font-size: 1rem;
     cursor: pointer;
-    transition: opacity 0.2s;
+    text-align: center;
   }
-  .btn:hover {
-    opacity: 0.85;
-  }
-  .btn-primary {
-    background: #007bff;
-    color: #fff;
-  }
-  .btn-danger {
-    background: #dc3545;
-    color: #fff;
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
+  .pos-btn:active { transform: scale(0.97); }
+  .pos-btn-primary   { background: #0d6efd; color: #fff; }
+  .pos-btn-warning   { background: #ffc107; color: #212529; }
+  .pos-btn-danger    { background: #dc3545; color: #fff; }
+  .pos-btn-secondary { background: #6c757d; color: #fff; }
+  .pos-btn-sm        { padding: 5px 10px; font-size: 0.85rem; }
   
-  /* Tabla */
-  .tabla-wrapper {
-    overflow-x: auto;
+  /* ===== Tabla ===== */
+  .pos-table-wrapper {
+    overflow-x: auto;   /* scroll horizontal en móvil */
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
   
-  .tabla {
+  .pos-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px;   /* fuerza scroll en pantallas pequeñas */
     background: #fff;
-    font-size: 0.9rem;
   }
-  
-  .tabla thead {
-    background: #f8f9fa;
-  }
-  
-  .tabla th,
-  .tabla td {
-    padding: 10px 8px;
+  .pos-table th,
+  .pos-table td {
+    padding: 10px 12px;
     border: 1px solid #dee2e6;
     text-align: left;
-    white-space: nowrap;
   }
-  
-  .tabla tbody tr:hover {
+  .pos-table thead {
+    background: #f8f9fa;
+  }
+  .pos-table tbody tr:hover {
     background: #f1f3f5;
   }
   
-  .col-acciones {
+  /* ===== Utilidades ===== */
+  .pos-text-center { text-align: center; }
+  
+  .pos-total-line {
     text-align: center;
+    margin: 16px 0;
   }
+  .pos-total  { color: blue; }
+  .pos-cambio { color: green; }
   
-  /* Totales */
-  .total-linea {
-    text-align: center;
-    margin-bottom: 16px;
-    font-size: 1.1rem;
-  }
-  .color-azul {
-    color: #0056b3;
-    font-weight: bold;
-  }
-  .color-verde {
-    color: #155724;
-    font-weight: bold;
-  }
-  
-  /* ===== RESPONSIVE MÓVIL ===== */
-  @media (max-width: 600px) {
-    .container {
-      padding: 10px 5px;
+  /* ===== Responsive: móvil ===== */
+  @media (max-width: 576px) {
+    .pos-container {
+      margin: 16px auto;
+      padding: 0 10px;
     }
-  
-    .titulo {
-      font-size: 1.2rem;
+    .pos-title {
+      font-size: 1.4rem;
     }
-  
-    .form-row {
+    .pos-row {
       flex-direction: column;
       align-items: stretch;
     }
-  
-    .campo,
-    .campo-codigo,
-    .campo-cantidad,
-    .campo-btn,
-    .campo-pago {
+    .pos-col-5,
+    .pos-col-2 {
       flex: 1 1 100%;
     }
-  
-    .btn {
+    .pos-buttons {
+      display: flex;
+      flex-direction: column;
+    }
+    .pos-btn {
       width: 100%;
-      padding: 12px;
-      font-size: 1rem;
     }
-  
-    .btn-danger {
-      width: auto;
-      padding: 6px 10px;
+    .pos-card {
+      padding: 14px;
     }
-  
-    .tabla {
-      font-size: 0.8rem;
-    }
-  
-    .tabla th,
-    .tabla td {
-      padding: 8px 5px;
-    }
-  
-    .total-linea {
-      font-size: 0.95rem;
+    .pos-table th,
+    .pos-table td {
+      padding: 8px 6px;
+      font-size: 0.85rem;
     }
   }   

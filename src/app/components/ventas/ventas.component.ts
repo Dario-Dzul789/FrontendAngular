@@ -185,7 +185,6 @@ export class VentasComponent implements OnInit {
   verDetallesVentas(id:number){
     const mitabla=this.mitabla.nativeElement;
     const miparrafo=this.miparrafo.nativeElement;
-    
     this.ventadetalleService.getVentasDetallesXIdVentas(id).subscribe(data=>{
       this.renderer2.setStyle(mitabla, 'visibility', 'visible');
       this.renderer2.setStyle(miparrafo, 'visibility', 'visible');

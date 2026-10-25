@@ -43,5 +43,10 @@ export class ProductoService {
   getProductoCodigo(codigo: string): Observable<Producto[]> {
     return this.http.get<Producto[]>(`${this.apiUrl}/${codigo}`);
   }
+
+  // Buscar un Producto por Nombre
+  getProductoNombre(nombre: string): Observable<Producto[]> {
+    return this.http.get<Producto[]>(`${this.apiUrl}/nombre/${nombre}`);
+  }
 }
 

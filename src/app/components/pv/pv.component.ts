@@ -9,16 +9,25 @@ import { Ventasdetalles } from '../../models/ventasdetalles';
 import { VentasdetallesService } from '../../services/ventasdetalles.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../models/usuario';
+import { HostListener } from '@angular/core';
+import { inject } from '@angular/core';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { ModalService } from '../../services/modal.service';
+import { ViewChild, ElementRef} from '@angular/core';
+
 
 @Component({
   selector: 'app-pv',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,ModalComponent],
   templateUrl: './pv.component.html',
   styleUrl: './pv.component.css'
 })
 export class PVComponent implements OnInit{
+  @ViewChild('tabla')mitabla!:ElementRef;
+
   productos: Producto[] = [];
   productosN: Producto[] = [];
+  productosNBN: Producto[] = [];
   producto: Producto = { id: 0, codigo: '', nombre: '', precio:0,existencia:0 };
   venta:Venta={id:0, id_venta:"",productos:"",total_venta:  0 ,fecha_venta: new Date()};
   ventadetalle:Ventasdetalles={id: 0, idventa:  0, idproducto:0, cantidad: 0, precio_producto: 0, total_producto: 0};
@@ -28,11 +37,13 @@ export class PVComponent implements OnInit{
   //ProductoCompleto = { id: 0, codigo: '', nombre: '', precio:0,cantida:0,total:0 };
 
   zonaHoraria: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  constructor(private productoService: ProductoService,private ventaService:VentaService,private ventadetalleService:VentasdetallesService) {
+  constructor(private productoService: ProductoService,private ventaService:VentaService,private ventadetalleService:VentasdetallesService,public modal:ModalService) { 
     //type ProductoCompleto ={ id: number; codigo: string; nombre: string; precio:number;cantidad: number;total_producto: number};
     //const productoscompletos: ProductoCompleto[] = [];
   }
-
+  abrir() {
+    this.modal.open('Detalles', { mensaje: 'Que Tenga Buen Día' });
+  }
   // SE LANZA AUTOMATICAMENTE AL MOSTRAR EL COMPONENTE
   ngOnInit(): void {
 
@@ -79,6 +90,32 @@ export class PVComponent implements OnInit{
     });
     //alert(this.codigoB)
     
+  }
+  verProductoNombre(){
+    //Se pone this.codigoB por que lo tomamos del input codigo y lo utilizamos como si fuera el nombre
+    this.productoService.getProductoNombre(this.codigoB).subscribe(data => {
+      this.productosNBN=data;
+      if(this.productosNBN.length!=0){
+        this.abrir();
+      }
+      else{
+        alert("No Existe El Producto "+this.codigoB);
+      }
+    });
+    //alert(this.codigoB)
+  }
+  verId(){
+    this.modal.close();
+    this.getProductoCodigo();
+  }
+  obtenerIndice(indice: number) {
+    //alert(`El índice de la fila seleccionada es: ${indice}`);
+    // Fila 1, columna 2 (índices base 0)
+    //const valor = this.mitabla.nativeElement.rows[indice].cells[0].innerText;
+    //console.log(valor); // "2,3"
+    const valor = this.mitabla.nativeElement.rows[indice+1].cells[1].innerText;
+    this.codigoB=valor;
+    //alert(`El índice de la fila seleccionada es: ${indice} valor ${valor}`);
   }
 
   metodo(){

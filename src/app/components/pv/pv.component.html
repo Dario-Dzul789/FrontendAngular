@@ -1,26 +1,27 @@
-<div class="container">
-    <h2 class="titulo">Punto De Venta</h2>
+<div class="pos-container">
+    <h2 class="pos-title">Punto De Venta</h2>
   
-    <!-- Formulario buscar producto -->
-    <form (ngSubmit)="getProductoCodigo()" class="card">
-      <div class="form-row">
-        <div class="campo campo-codigo">
-          <input type="text" class="input" [(ngModel)]="codigoB" name="codigo" placeholder="Codigo" required />
+    <!-- Formulario buscar -->
+    <form (ngSubmit)="getProductoCodigo()" class="pos-card">
+      <div class="pos-row">
+        <div class="pos-col-5">
+          <input type="text" class="pos-input" [(ngModel)]="codigoB" name="codigo" placeholder="Codigo" required />
         </div>
-        <div class="campo campo-cantidad">
-          <input type="number" class="input" [(ngModel)]="cantidad" name="cantidad" placeholder="Cantidad" required />
+        <div class="pos-col-2">
+          <input type="number" class="pos-input" [(ngModel)]="cantidad" name="cantidad" placeholder="Cantidad" required />
         </div>
-        <div class="campo campo-btn">
-          <button type="submit" class="btn btn-primary">Buscar</button>
+        <div class="pos-col-2 pos-buttons">
+          <button type="submit" class="pos-btn pos-btn-primary">Buscar</button>
+          <button type="button" class="pos-btn pos-btn-warning" (click)="verProductoNombre()">Buscar Por Nombre</button>
         </div>
       </div>
     </form>
   
     <button (click)="metodo()" [hidden]="true">Boton</button>
   
-    <!-- Tabla -->
-    <div class="tabla-wrapper">
-      <table class="tabla">
+    <!-- Tabla productos -->
+    <div class="pos-table-wrapper">
+      <table class="pos-table">
         <thead>
           <tr>
             <th>#</th>
@@ -28,8 +29,8 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Cantidad</th>
-            <th>Total</th>
-            <th class="col-acciones">Acciones</th>
+            <th>Total Producto</th>
+            <th class="pos-text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -40,28 +41,57 @@
             <td>{{ u.precio }}</td>
             <td>{{ cantidades[i] }}</td>
             <td>{{ totales[i] }}</td>
-            <td class="col-acciones">
-              <button class="btn btn-danger" (click)="eliminar(i)">Eliminar</button>
+            <td class="pos-text-center">
+              <button class="pos-btn pos-btn-danger pos-btn-sm" (click)="eliminar(i)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   
-    <h5 class="total-linea">
-      Total: <span class="color-azul">{{ Total }}</span>
-      Cambio Es: <span class="color-verde">{{ Cambio }}</span>
+    <h5 class="pos-total-line">
+      Total: <span class="pos-total">{{ Total }}</span>
+      Cambio Es: <span class="pos-cambio">{{ Cambio }}</span>
     </h5>
   
-    <!-- Formulario registrar -->
-    <form (ngSubmit)="registrarVenta()" class="card">
-      <div class="form-row">
-        <div class="campo campo-pago">
-          <input type="number" class="input" name="Pago" placeholder="Pago" (input)="onInputChange($event)" [(ngModel)]="Pago" required />
+    <!-- Formulario pago -->
+    <form (ngSubmit)="registrarVenta()" class="pos-card">
+      <div class="pos-row">
+        <div class="pos-col-5">
+          <input type="number" class="pos-input" name="Pago" placeholder="Pago" (input)="onInputChange($event)" [(ngModel)]="Pago" required />
         </div>
-        <div class="campo campo-btn">
-          <button type="submit" class="btn btn-primary">Registrar</button>
+        <div class="pos-col-2 pos-buttons">
+          <button type="submit" class="pos-btn pos-btn-primary">Registrar</button>
         </div>
       </div>
     </form>
+  
+    <!-- Modal -->
+    <app-modal>
+      <div class="pos-table-wrapper">
+        <table class="pos-table" (dblclick)="verId()" id="tabla" #tabla>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Codigo</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Existencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of productosNBN; let i = index" (click)="obtenerIndice(i)">
+              <td>{{ u.id }}</td>
+              <td>{{ u.codigo }}</td>
+              <td>{{ u.nombre }}</td>
+              <td>{{ u.precio }}</td>
+              <td>{{ u.existencia }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="pos-btn pos-btn-secondary" (click)="modal.close()">Cerrar</button>
+        <p>{{ modal.data?.mensaje }}</p>
+      </div>
+    </app-modal>
   </div>   
+
