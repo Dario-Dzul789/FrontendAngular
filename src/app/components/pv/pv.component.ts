@@ -42,7 +42,7 @@ export class PVComponent implements OnInit{
     //const productoscompletos: ProductoCompleto[] = [];
   }
   abrir() {
-    this.modal.open('Detalles', { mensaje: 'Que Tenga Buen Día' });
+    this.modal.open('Detalles', { mensaje: 'Seleccione Un Producto' });
   }
   // SE LANZA AUTOMATICAMENTE AL MOSTRAR EL COMPONENTE
   ngOnInit(): void {
