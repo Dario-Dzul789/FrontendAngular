@@ -9,3 +9,24 @@
     color:darkgreen;
     font-weight: bold;
 }
+.select-usuario {
+    width: 100%;          /* en móvil ocupa todo el ancho */
+    padding: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  .select-usuario select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;      /* evita zoom automático en iOS */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* A partir de 768px (tablet/desktop) limita el ancho */
+  @media (min-width: 768px) {
+    .select-usuario {
+      width: 8.333%;       /* equivale a col-md-1 (1/12) */
+      padding: 8px 4px;
+    }
+  }   

@@ -28,7 +28,7 @@
           <th>ID_VENTA</th>
           <th>TOTAL VENTA</th>
           <th>FECHA</th>
-          <th>Acciones</th>
+          <th [hidden]="true">Acciones</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -37,7 +37,7 @@
           <td>{{ u.id_venta }}</td>
           <td>{{ u.total_venta }}</td>
           <td>{{ u.fecha_venta | date :'short':'UTC' }}</td>
-          <td class="ventas-acciones">
+          <td class="ventas-acciones" [hidden]="true">
             <button class="btn btn-sm btn-secundario" (click)="verProductos(u.productos)">Ver Productos</button>
           </td>
           <td class="ventas-acciones">
@@ -61,7 +61,7 @@
       <table class="ventas-tabla" id="tabla" #tabla>
         <thead>
           <tr>
-            <th>ID</th>
+            <th [hidden]="true">ID</th>
             <th>PRODUCTO</th>
             <th>CANTIDAD</th>
             <th>PRECIO</th>
@@ -70,7 +70,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let u of todosDetallesVenta; let i = index">
-            <td>{{ u.id }}</td>
+            <td [hidden]="true">{{ u.id }}</td>
             <td>{{ u.producto }}</td>
             <td>{{ u.cantidad }}</td>
             <td>{{ u.precio_producto }}</td>

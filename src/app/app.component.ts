@@ -10,4 +10,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class AppComponent {
   title = 'crud-angular';
+  menuAbierto = false;
+
+  abrirMenu() {
+    this.menuAbierto = !this.menuAbierto;
+  }
 }

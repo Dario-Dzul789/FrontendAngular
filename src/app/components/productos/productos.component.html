@@ -78,7 +78,7 @@
         <table class="table table-bordered table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
-                <th>#</th>
+                <th [hidden]="true">#</th>
                 <th>Codigo</th>
                 <th>Nombre</th>
                 <th>Precio</th>
@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let u of productos; let i = index">
-                <td>{{ u.id }}</td>
+                <td [hidden]="true">{{ u.id }}</td>
                 <td>{{ u.codigo }}</td>
                 <td>{{ u.nombre }}</td>
                 <td>{{ u.precio }}</td>

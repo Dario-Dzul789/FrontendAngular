@@ -79,7 +79,7 @@
         <table class="table table-bordered table-hover shadow-sm">
             <thead class="table-light">
                 <tr>
-                <th>#</th>
+                <th [hidden]="true">#</th>
                 <th>Nombre</th>
                 <th>Contraseña</th>
                 <th>Email</th>
@@ -90,7 +90,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let u of usuarios; let i = index">
-                <td>{{ u.id }}</td>
+                <td [hidden]="true">{{ u.id }}</td>
                 <td>{{ u.nombre }}</td>
                 <td>{{ u.contrasena }}</td>
                 <td>{{ u.email }}</td>

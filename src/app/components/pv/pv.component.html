@@ -24,8 +24,8 @@
       <table class="pos-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Codigo</th>
+            <th [hidden]="true">#</th>
+            <th [hidden]="true">Codigo</th>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Cantidad</th>
@@ -35,8 +35,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let u of productos; let i = index">
-            <td>{{ u.id }}</td>
-            <td>{{ u.codigo }}</td>
+            <td [hidden]="true">{{ u.id }}</td>
+            <td [hidden]="true">{{ u.codigo }}</td>
             <td>{{ u.nombre }}</td>
             <td>{{ u.precio }}</td>
             <td>{{ cantidades[i] }}</td>
@@ -72,8 +72,8 @@
         <table class="pos-table" (dblclick)="verId()" id="tabla" #tabla>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Codigo</th>
+              <th [hidden]="true">#</th>
+              <th [hidden]="true">Codigo</th>
               <th>Nombre</th>
               <th>Precio</th>
               <th>Existencia</th>
@@ -81,8 +81,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let u of productosNBN; let i = index" (click)="obtenerIndice(i)">
-              <td>{{ u.id }}</td>
-              <td>{{ u.codigo }}</td>
+              <td [hidden]="true">{{ u.id }}</td>
+              <td [hidden]="true">{{ u.codigo }}</td>
               <td>{{ u.nombre }}</td>
               <td>{{ u.precio }}</td>
               <td>{{ u.existencia }}</td>

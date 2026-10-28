@@ -1,30 +1,14 @@
-<!-- A grey horizontal navbar that becomes vertical on small screens -->
-<nav class="navbar navbar-expand-sm bg-light">
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" routerLink="">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/usuarios">Usuarios</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/productos">Productos</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/pv">Punto De Venta</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/ventas">Ventas</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/chats">Chats</a>
-    </li>
+<nav class="mi-navbar">
+  <button class="hamburger" (click)="abrirMenu()">☰</button>
+  <ul class="mi-navbar-nav" [class.activo]="menuAbierto">
+    <li><a routerLink="" routerLinkActive="activo">Home</a></li>
+    <li><a routerLink="/usuarios" routerLinkActive="activo">Usuarios</a></li>
+    <li><a routerLink="/productos" routerLinkActive="activo">Productos</a></li>
+    <li><a routerLink="/pv" routerLinkActive="activo">Punto De Venta</a></li>
+    <li><a routerLink="/ventas" routerLinkActive="activo">Ventas</a></li>
+    <li><a routerLink="/chats" routerLinkActive="activo">Chats</a></li>
   </ul>
-
 </nav>
-
-<router-outlet></router-outlet>
+<router-outlet></router-outlet>   
   
   
