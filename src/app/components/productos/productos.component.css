@@ -1,0 +1,132 @@
+/* ===== Contenedor general ===== */
+.container-productos {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  .titulo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  /* ===== Formulario ===== */
+  .formulario {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fila-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .campo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: border-color .2s;
+    box-sizing: border-box;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #6610f2;
+    box-shadow: 0 0 0 3px rgba(102,16,242,.15);
+  }
+  
+  /* ===== Botones ===== */
+  .botones-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity .2s;
+  }
+  
+  .btn:hover { opacity: 0.85; }
+  
+  .btn-primario  { background: #0d6efd; color: #fff; }
+  .btn-secundario{ background: #6c757d; color: #fff; }
+  .btn-aviso     { background: #ffc107; color: #333; }
+  .btn-peligro   { background: #dc3545; color: #fff; }
+  .btn-sm        { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+  
+  /* ===== Tabla ===== */
+  .tabla-scroll {
+    overflow-x: auto;          /* scroll horizontal en móvil */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tabla {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;           /* fuerza scroll en pantallas < 500px */
+  }
+  
+  .tabla th,
+  .tabla td {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #dee2e6;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  
+  .tabla thead th {
+    background: #f8f9fa;
+    font-weight: 600;
+  }
+  
+  .tabla tbody tr:hover {
+    background: #f1f3f5;
+  }
+  
+  .centro  { text-align: center; }
+  .oculto  { display: none; }
+  
+  /* ===== RESPONSIVO (móvil) ===== */
+  @media (max-width: 768px) {
+    .fila-form {
+      grid-template-columns: 1fr 1fr;   /* 2 columnas */
+    }
+  
+    .botones-form {
+      flex-direction: column;
+    }
+  
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .fila-form {
+      grid-template-columns: 1fr;       /* 1 columna */
+    }
+  
+    .titulo {
+      font-size: 1.25rem;
+    }
+  }   

@@ -9,7 +9,8 @@ import { Usuario } from '../../models/usuario';
   selector: 'app-usuarios',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './usuarios.component.html'
+  templateUrl: './usuarios.component.html',
+  styleUrl: './usuarios.component.css'
 })
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];

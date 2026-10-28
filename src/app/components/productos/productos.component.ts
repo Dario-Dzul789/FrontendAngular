@@ -12,7 +12,8 @@ import autoTable from 'jspdf-autotable';
   selector: 'app-productos',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './productos.component.html'
+  templateUrl: './productos.component.html',
+  styleUrl: './productos.component.css'
 })
 export class ProductosComponent implements OnInit {
   productos: Producto[] = [];

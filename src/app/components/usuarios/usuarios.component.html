@@ -1,108 +1,85 @@
-<!-- Contenedor con Bootstrap -->
+<!-- Componente.html -->
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Gestión de Usuarios</h2>    
+  <h2 class="mb-4 text-center">Gestión de Usuarios</h2>
 
-        <!-- Formulario para agregar o editar usuario -->
-        <form (ngSubmit)="guardarUsuario()" class="card p-4 shadow-sm mb-4">
-        <div class="row g-3">
+  <form (ngSubmit)="guardarUsuario()" class="card p-4 shadow-sm mb-4">
+    <div class="form-grid">
 
-            <!-- Campo nombre -->
-            <div class="col-md-5">
-            <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="usuario.nombre"
-                name="nombre"
-                placeholder="Nombre"
-                required
-            />
-            </div>
+      <div class="form-field">
+        <input type="text" class="form-control"
+               [(ngModel)]="usuario.nombre" name="nombre"
+               placeholder="Nombre" required />
+      </div>
 
-            <!-- Campo Contrasena -->
-            <div class="col-md-5">
-                <input
-                    type="text"
-                    class="form-control"
-                    [(ngModel)]="usuario.contrasena"
-                    name="contrasena"
-                    placeholder="Contrasena"
-                    required
-                />
-                </div>
+      <div class="form-field">
+        <input type="text" class="form-control"
+               [(ngModel)]="usuario.contrasena" name="contrasena"
+               placeholder="Contrasena" required />
+      </div>
 
-            <!-- Campo email -->
-            <div class="col-md-5">
-            <input
-                type="email"
-                class="form-control"
-                [(ngModel)]="usuario.email"
-                name="email"
-                placeholder="Email"
-                required
-            />
-            </div>
-            <!-- Campo Fecha Nacimiento -->
-            <div class="col-md-5">
-                <label htmlFor="fechaInicio" className="form-label text-center w-100"></label> 
-                    <input
-                        type="date"
-                        name="fechaInico"
-                        [ngModel]="usuario.fecha_nacimiento | date:'yyyy-MM-dd'"
-                        (ngModelChange)='usuario.fecha_nacimiento = $event'
-                        class="form-control"
-                    />
-                </div>
-             <!-- Campo Signo-->
-             <div class="col-md-1">
-                <label htmlFor="fechaInicio" className="form-label text-center w-100">{{usuario.signo}}</label> 
-                    
-                </div>
+      <div class="form-field">
+        <input type="email" class="form-control"
+               [(ngModel)]="usuario.email" name="email"
+               placeholder="Email" required />
+      </div>
 
-            <!-- Botones: Agregar/Actualizar y Cancelar -->
-            <div class="col-md-2 d-grid gap-2">
-            <button type="submit" class="btn btn-primary">
-                {{ editando ? 'Actualizar' : 'Agregar' }}
-            </button>
-            <button
-                type="button"
-                class="btn btn-secondary"
-                *ngIf="editando"
-                (click)="resetFormulario()"
-            >
-                Cancelar
-            </button>
-            </div>
-        </div>
-        </form>
-        <button (click)="metodo2()" [hidden]="true">Boton</button>
-        <!-- Tabla para mostrar usuarios -->
-        <table class="table table-bordered table-hover shadow-sm">
-            <thead class="table-light">
-                <tr>
-                <th [hidden]="true">#</th>
-                <th>Nombre</th>
-                <th>Contraseña</th>
-                <th>Email</th>
-                <th>Fecha De Nacimiento</th>
-                <th>Signo</th>
-                <th class="text-center">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let u of usuarios; let i = index">
-                <td [hidden]="true">{{ u.id }}</td>
-                <td>{{ u.nombre }}</td>
-                <td>{{ u.contrasena }}</td>
-                <td>{{ u.email }}</td>
-                <td>{{ u.fecha_nacimiento | date:'yyyy-MM-dd':'UTC'}}</td>
-                <td>{{ u.signo }}</td>
-                <td class="text-center">
-                    <button class="btn btn-sm btn-warning me-2" (click)="editar(u)">Editar</button>
-                    <button class="btn btn-sm btn-danger" (click)="eliminar(u.id!)">Eliminar</button>
-                </td>
-                </tr>
-            </tbody>
-        </table>
+      <div class="form-field">
+        <input type="date" name="fechaInicio"
+               [ngModel]="usuario.fecha_nacimiento | date:'yyyy-MM-dd'"
+               (ngModelChange)="usuario.fecha_nacimiento = $event"
+               class="form-control" />
+      </div>
+
+      <div class="form-field form-field--signo">
+        <label class="form-label">{{ usuario.signo }}</label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">
+          {{ editando ? 'Actualizar' : 'Agregar' }}
+        </button>
+        <button type="button" class="btn btn-secondary"
+                *ngIf="editando" (click)="resetFormulario()">
+          Cancelar
+        </button>
+      </div>
+
     </div>
+  </form>
+
+  <button (click)="metodo2()" [hidden]="true">Boton</button>
+
+  <div class="table-wrapper">
+    <table class="table table-bordered table-hover shadow-sm">
+      <thead class="table-light">
+        <tr>
+          <th [hidden]="true">#</th>
+          <th>Nombre</th>
+          <th>Contraseña</th>
+          <th>Email</th>
+          <th>Fecha De Nacimiento</th>
+          <th>Signo</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios; let i = index">
+          <td [hidden]="true">{{ u.id }}</td>
+          <td>{{ u.nombre }}</td>
+          <td>{{ u.contrasena }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.fecha_nacimiento | date:'yyyy-MM-dd':'UTC' }}</td>
+          <td>{{ u.signo }}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning me-2" (click)="editar(u)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="eliminar(u.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>   
+
+
 
 
